@@ -1,5 +1,5 @@
 import genetic_alg as ga
-from random import sample
+from random import sample,uniform
 
 # Tournament Selection
 def T_select(popy):
@@ -15,7 +15,17 @@ def T_select(popy):
 # Roulette-Wheel Selection
 def RW_select(popy):
     new_popy = ga.Population(popy.pop_size)
-    rand_n = []
+    new_chromosomes = []
     summation = sum(popa.get_fitness() for popa in popy.possible_routes)
+    for _ in range(popy.pop_size):
+        pick = uniform(0, summation)
+        current = 0
+        for chromosome in popy.possible_routes:
+            current += chromosome.get_fitness()
+            if current > pick:
+                new_chromosomes.append(chromosome)
+                continue
+    new_popy.possible_routes = new_chromosomes
+    return new_popy
     
 
