@@ -10,13 +10,13 @@ def run(args):
     if args.verbose:
         print("-- Running TSP-GA with {} cities --".format(len(genes)))
 
-    best_routes,best_dists = ga.run_alg(genes, args.pop_size, args.n_gen,
+    best_route,best_dist = ga.run_alg(genes, args.pop_size, args.n_gen,
                                args.mut_rate, args.selector, args.verbose)
 
     if args.verbose:
         print("-- Drawing Route --")
 
-    plot(best_dists, best_routes)
+    plot(best_route)
 
     if args.verbose:
         print("-- Done --")

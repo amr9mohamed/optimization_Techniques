@@ -140,6 +140,6 @@ def run_alg(genes, pop_size, n_gen, mut, selector, verbose):
         print("Best route: ", best_route.genes)
         print("with cost: ", min_dist)
 
-    return best_routes,best_dists
+    return best_route,min_dist
 
 
